@@ -1,16 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { FaXTwitter } from "react-icons/fa6";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
 const links = [
   { icon: Github, label: "GitHub", href: "https://github.com/euraphhh" },
   { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/oraphaelxavier/" },
-  { icon: Twitter, label: "Twitter", href: "https://twitter.com/euraphhh" },
+  { icon: FaXTwitter, label: "X", href: "https://x.com/euraphhh" },
   { icon: Mail, label: "E-mail", href: "mailto:raphaelxavier.code@gmail.com" },
 ];
 
@@ -37,11 +38,10 @@ export function Contact() {
                 Vamos conversar
               </p>
               <h3 className="text-3xl sm:text-4xl font-bold leading-tight">
-                Entre em contato comigo caso tenha interesse.
+                Entre em contato comigo!
               </h3>
               <p className="text-primary-foreground/85 leading-relaxed max-w-xl">
-                Se quiser trocar ideia sobre desenvolvimento, projetos, oportunidades ou algo
-                específico do portfólio, o melhor caminho é o e-mail.
+                Estou aberto a oportunidades, projetos e parcerias. Vamos conversar?
               </p>
 
               <div className="flex flex-wrap gap-3 pt-2">

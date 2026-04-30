@@ -21,13 +21,14 @@ const skills = [
   "AI/GenAI",
   "Git",
   "REST APIs",
-  "SQL",
+  "PostgreSQL/MySQL",
+  "PHP/Laravel"
 ];
 
 const facts = [
   {
     icon: GraduationCap,
-    label: "Formação",
+    label: "Graduação",
     value: "Ciência da Computação — UNIP",
   },
   {
@@ -38,7 +39,7 @@ const facts = [
   {
     icon: Code2,
     label: "Experiência",
-    value: "AI/GenAI e desenvolvimento web",
+    value: "IA Generativa, desenvolvimento fullstack",
   },
 ];
 
@@ -49,15 +50,15 @@ const experiences = [
     period: "Nov/2025 - Presente",
     summary:
       "Atuação voltada a AI/GenAI, explorando automações, fluxos inteligentes e apoio a produtos com foco em produtividade.",
-    tags: ["AI/GenAI", "Automação", "Integração", "Produtos digitais"],
+    tags: ["AI/GenAI", "Automação", "Integração", "Produtos digitais, React, PHP"],
   },
   {
     title: "Técnico em Informática",
     company: "Experiência prévia",
     period: "Base prática consolidada",
     summary:
-      "Vivência com suporte, organização de ambientes, manutenção e resolução de problemas no dia a dia técnico.",
-    tags: ["Suporte", "Infra", "Manutenção", "Resolução de problemas"],
+      "Vivência com suporte, organização de ambientes, princípios de programação, manutenção e resolução de problemas no dia a dia técnico.",
+    tags: ["Java", "C++", "Manutenção", "Resolução de problemas"],
   },
 ];
 

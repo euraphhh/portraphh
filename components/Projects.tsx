@@ -6,7 +6,9 @@ import { ArrowUpRight, Github, PenLine, PlaySquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { FaBehance } from "react-icons/fa";
 import serbImage from "../src/assets/163.png";
+import verisImage from "../src/assets/veris.jpg";
 import projectImage from "../src/assets/project.jpg";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
@@ -29,6 +31,18 @@ const projects = [
     href: "https://github.com/euraphhh/pyBasicConverter",
     badges: ["Python", "Automação", "CLI", "Utilitário"],
     accent: "from-foreground/10 to-transparent",
+  },
+  {
+    title: "VERIS Creative Studio",
+    description:
+      "Meu primeiro projeto voltado a design e UX/UI. A VERIS é um estúdio criativo que atende empresas locais.",
+    image: verisImage,
+    href: "https://veriscreative.vercel.app",
+    behance: "https://www.behance.net/gallery/246451035/VERIS-Creative-Identidade-Visual",
+    badges: ["Next.js", "Shadcn/UI", "UX/UI", "Projeto autoral", "Photoshop", "Figma", "Python"],
+    accent: "from-primary/20 to-transparent",
+    redButton: "Visite o site",
+    outlineButton: "Behance"
   },
 ];
 
@@ -53,7 +67,7 @@ export function Projects() {
         </motion.div>
 
         <div className="grid gap-8">
-          {projects.map((project, index) => (
+          {projects.map((project: any, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 24 }}
@@ -101,7 +115,7 @@ export function Projects() {
                       <div className="flex flex-wrap gap-3 pt-2">
                         <Button asChild>
                           <a href={project.href} target="_blank" rel="noreferrer" className="group">
-                            Ver repositório
+                            {project.redButton || "Ver repositório"}
                             <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                           </a>
                         </Button>

@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Twitter } from "lucide-react";
+import { ArrowDown, Github, Linkedin, X } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
@@ -61,16 +62,6 @@ export function Hero() {
         animate="show"
         className="max-w-4xl mx-auto px-4 sm:px-6 text-center"
       >
-        {/* Badge */}
-        <motion.div variants={item} className="mb-6">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium border border-primary/30 bg-primary/5 text-primary">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-            </span>
-            Disponível para oportunidades
-          </span>
-        </motion.div>
 
         {/* Greeting */}
         <motion.p
@@ -93,7 +84,7 @@ export function Hero() {
         {/* Role */}
         <motion.div variants={item} className="mb-6">
           <p className="text-xl sm:text-2xl text-muted-foreground font-light tracking-wide">
-            Desenvolvedor Full Stack
+            Desenvolvedor GenAI/Web
             <span className="ml-1 inline-block w-0.5 h-6 bg-primary align-middle animate-cursor-blink" />
           </p>
         </motion.div>
@@ -152,9 +143,9 @@ export function Hero() {
               label: "LinkedIn",
             },
             {
-              icon: Twitter,
-              href: "https://twitter.com/euraphhh",
-              label: "Twitter",
+              icon: FaXTwitter,
+              href: "https://x.com/euraphhh",
+              label: "X",
             },
           ].map(({ icon: Icon, href, label }) => (
             <motion.a

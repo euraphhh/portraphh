@@ -1,7 +1,8 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
+import { Github, Linkedin } from "lucide-react";
 
 const socialLinks = [
-  { icon: Twitter, href: "https://twitter.com/euraphhh", label: "Twitter" },
+  { icon: FaXTwitter, href: "https://x.com/euraphhh", label: "X" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/oraphaelxavier/", label: "LinkedIn" },
   { icon: Github, href: "https://github.com/euraphhh", label: "GitHub" },
 ];
