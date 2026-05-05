@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, X } from "lucide-react";
+import { ArrowDown, Github, Linkedin } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 

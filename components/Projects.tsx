@@ -13,7 +13,19 @@ import projectImage from "../src/assets/project.jpg";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  image: any;
+  href: string;
+  behance?: string;
+  badges: string[];
+  accent: string;
+  redButton?: string;
+  outlineButton?: string;
+}
+
+const projects: Project[] = [
   {
     title: "SERB",
     description:
@@ -49,7 +61,7 @@ const projects = [
 export function Projects() {
   return (
     <section id="projetos" className="section-padding">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-[1400px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +79,7 @@ export function Projects() {
         </motion.div>
 
         <div className="grid gap-8">
-          {projects.map((project: any, index) => (
+          {projects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 24 }}
@@ -120,9 +132,9 @@ export function Projects() {
                           </a>
                         </Button>
                         <Button variant="outline" asChild>
-                          <a href={project.href} target="_blank" rel="noreferrer">
-                            <Github className="h-4 w-4" />
-                            Código
+                          <a href={project.behance || project.href} target="_blank" rel="noreferrer">
+                            {project.behance ? <FaBehance className="h-4 w-4" /> : <Github className="h-4 w-4" />}
+                            {project.outlineButton || "Código"}
                           </a>
                         </Button>
                       </div>

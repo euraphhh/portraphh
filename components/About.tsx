@@ -11,20 +11,6 @@ import profileImage from "../src/assets/profnew.jpg";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
-const skills = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "JavaScript",
-  "Node.js",
-  "Python",
-  "AI/GenAI",
-  "Git",
-  "REST APIs",
-  "PostgreSQL/MySQL",
-  "PHP/Laravel"
-];
-
 const facts = [
   {
     icon: GraduationCap,
