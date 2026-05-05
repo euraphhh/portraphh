@@ -9,7 +9,6 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import profileImage from "../src/assets/profnew.jpg";
 
-const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
 const facts = [
   {

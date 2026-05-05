@@ -127,7 +127,7 @@ export function Hero() {
               aria-label={label}
               whileHover={{ scale: 1.15, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2, ease }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
               className="w-10 h-10 flex items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 hover:bg-primary/5 transition-colors duration-200"
             >
               <Icon className="w-4 h-4" />

@@ -37,7 +37,7 @@ export function Intro({
       const timer = setTimeout(() => onComplete(), 1500);
       return () => clearTimeout(timer);
     }
-  }, [index, phase, onComplete]);
+  }, [index, phase, onExiting, onComplete]);
 
   const isExiting = phase === "exiting";
   const hasColor = phase === "logoColor" || phase === "exiting";
