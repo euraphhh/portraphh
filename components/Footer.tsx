@@ -9,7 +9,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/60">
+    <footer className="bg-[#131313] border-t border-white/5 relative z-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <div className="text-sm text-muted-foreground">
           &copy; 2026 Raphael Xavier. All rights reserved.

@@ -86,60 +86,44 @@ export function About() {
   }, [experienceOpen]);
 
   return (
-    <section id="sobre" className="section-padding">
-      <div className="max-w-6xl mx-auto">
+    <section id="sobre" className="section-padding relative z-10">
+      <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="max-w-[1400px] mx-auto bg-white/40 dark:bg-[#131313] backdrop-blur-md rounded-[2.5rem] border border-border/50 dark:border-white/5 p-8 sm:p-20 shadow-xl dark:shadow-2xl relative overflow-hidden group"
+      >
+        {/* Sutil brilho interno no topo */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/10 to-transparent" />
+        
         {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-          className="mb-16"
-        >
-          <p className="text-primary text-sm font-mono font-medium mb-2">01. sobre</p>
+        <div className="mb-16">
+          <p className="text-primary text-sm font-mono font-medium mb-2 uppercase tracking-widest">01. sobre</p>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Sobre Mim</h2>
           <div className="mt-4 h-px w-16 bg-primary" />
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
           {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease }}
-            className="relative"
-          >
+          <div className="relative">
             <div className="relative w-full max-w-sm mx-auto lg:mx-0">
-              {/* Decorative border */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.6, ease }}
-                className="absolute inset-0 rounded-2xl border-2 border-primary/30 translate-x-4 translate-y-4"
-              />
-              <div className="relative rounded-2xl overflow-hidden bg-muted aspect-square">
+              <div className="absolute inset-0 rounded-2xl border-2 border-primary/30 translate-x-4 translate-y-4 -z-10" />
+              <div className="relative rounded-2xl overflow-hidden bg-muted aspect-square border border-border/50">
                 <Image
                   src={profileImage}
                   alt="Raphael Xavier"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                   priority
                 />
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease, delay: 0.1 }}
-            className="space-y-6"
-          >
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+          <div className="space-y-8">
+            <div className="space-y-4 text-muted-foreground leading-relaxed text-lg">
               <p>
                 Sou um desenvolvedor em formação, apaixonado por tecnologia e sempre em busca
                 de aprender mais. Sou técnico em informática e atualmente estou cursando
@@ -154,53 +138,36 @@ export function About() {
             </div>
 
             {/* Facts */}
-            <div className="grid gap-3">
+            <div className="grid gap-4">
               {facts.map(({ icon: Icon, label, value }) => (
-                <div key={label} className="flex items-center gap-3 text-sm">
-                  <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-4 h-4 text-primary" />
+                <div key={label} className="flex items-center gap-4 text-sm group/fact">
+                  <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center flex-shrink-0 border border-border/50 transition-colors group-hover/fact:border-primary/50">
+                    <Icon className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <span className="text-muted-foreground">{label}: </span>
-                    <span className="text-foreground font-medium">{value}</span>
+                    <span className="text-muted-foreground block text-xs uppercase tracking-wider">{label}</span>
+                    <span className="text-foreground font-medium text-base">{value}</span>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Skills */}
-            <div>
-              <p className="text-sm text-muted-foreground mb-3">Tecnologias que uso:</p>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <Badge key={skill} variant="tech">
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-
-            {/* Resume button */}
-            <div className="flex flex-wrap gap-3">
-              <Button variant="outline" onClick={() => setExperienceOpen(true)}>
-                <Sparkles className="w-4 h-4" />
+            {/* Skills e Botões resumidos para o card */}
+            <div className="pt-4 flex flex-wrap gap-4">
+              <Button variant="outline" onClick={() => setExperienceOpen(true)} className="rounded-full border-white/10 hover:bg-white/5">
+                <Sparkles className="w-4 h-4 mr-2" />
                 Experiências
               </Button>
-              <Button asChild variant="outline">
-                <a
-                  href="/curricRapha.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="gap-2"
-                >
+              <Button asChild variant="outline" className="rounded-full border-white/10 hover:bg-white/5">
+                <a href="/curricRapha.pdf" target="_blank" rel="noreferrer" className="gap-2">
                   <FileText className="w-4 h-4" />
-                  Ver Currículo
+                  Currículo
                 </a>
               </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </div>
+      </motion.div>
 
       <AnimatePresence>
         {experienceOpen && (

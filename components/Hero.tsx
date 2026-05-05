@@ -27,35 +27,6 @@ export function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Animated background blobs */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <motion.div
-          className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-primary/8 blur-[120px]"
-          animate={{ x: [0, 60, 0], y: [0, -40, 0], scale: [1, 1.15, 1] }}
-          transition={{ duration: 18, ease: "easeInOut", repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary/6 blur-[100px]"
-          animate={{ x: [0, -50, 0], y: [0, 50, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 22, ease: "easeInOut", repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-primary/4 blur-[80px]"
-          animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
-          transition={{ duration: 30, ease: "linear", repeat: Infinity }}
-        />
-      </div>
-
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 -z-10 opacity-[0.03] dark:opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
       <motion.div
         variants={container}
         initial="hidden"
