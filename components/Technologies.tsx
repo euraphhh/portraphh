@@ -106,23 +106,26 @@ const cardVariants = {
 
 export function Technologies() {
   return (
-    <section id="tecnologias" className="section-padding bg-muted/30">
-      <div className="max-w-6xl mx-auto">
+    <section id="tecnologias" className="section-padding relative z-10">
+      <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="max-w-[1400px] mx-auto bg-white/40 dark:bg-[#131313] backdrop-blur-md rounded-[2.5rem] border border-border/50 dark:border-white/5 p-8 sm:p-20 shadow-xl dark:shadow-2xl relative overflow-hidden group"
+      >
+        {/* Sutil brilho interno no topo */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/10 to-transparent" />
+
         {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-          className="mb-16"
-        >
-          <p className="text-primary text-sm font-mono font-medium mb-2">02. habilidades</p>
+        <div className="mb-16">
+          <p className="text-primary text-sm font-mono font-medium mb-2 uppercase tracking-widest">02. habilidades</p>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Tecnologias</h2>
           <div className="mt-4 h-px w-16 bg-primary" />
-          <p className="mt-6 text-muted-foreground max-w-xl">
+          <p className="mt-6 text-muted-foreground max-w-xl text-lg">
             Ferramentas e tecnologias que uso para construir produtos digitais de qualidade.
           </p>
-        </motion.div>
+        </div>
 
         {/* Grid */}
         <motion.div
@@ -130,7 +133,7 @@ export function Technologies() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 relative z-10"
         >
           {technologies.map((tech) => (
             <motion.div
@@ -138,23 +141,23 @@ export function Technologies() {
               variants={cardVariants}
               whileHover={{ y: -4, scale: 1.02 }}
               transition={{ duration: 0.2, ease }}
-              className="group flex flex-col items-center gap-3 p-5 rounded-xl border border-border bg-card hover:border-primary/30 hover:bg-card/80 transition-colors duration-300 cursor-default"
+              className="group/tech flex flex-col items-center gap-3 p-6 rounded-2xl border border-border/50 dark:border-white/5 bg-background/50 dark:bg-white/[0.02] hover:border-primary/30 hover:bg-background transition-all duration-300 cursor-default shadow-sm dark:shadow-none"
             >
               <div
-                className={`w-12 h-12 rounded-lg ${tech.bg} flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}
+                className={`w-14 h-14 rounded-xl ${tech.bg} flex items-center justify-center transition-transform duration-300 group-hover/tech:scale-110 shadow-lg`}
               >
-                <tech.icon className={`w-6 h-6 ${tech.color}`} />
+                <tech.icon className={`w-7 h-7 ${tech.color}`} />
               </div>
               <div className="text-center">
-                <p className="font-semibold text-sm text-foreground">{tech.name}</p>
-                <p className="text-xs text-muted-foreground mt-0.5 leading-tight">
+                <p className="font-semibold text-base">{tech.name}</p>
+                <p className="text-xs text-muted-foreground mt-1 leading-tight">
                   {tech.description}
                 </p>
               </div>
             </motion.div>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

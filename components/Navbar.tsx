@@ -14,7 +14,7 @@ const navLinks = [
   { href: "#contato", label: "Contato" },
 ];
 
-export function Navbar() {
+export function Navbar({ showLogo = true }: { showLogo?: boolean }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -48,17 +48,30 @@ export function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-xl font-bold tracking-tight"
-          >
-            <span className="text-primary">R</span>
-            <span className="text-foreground">aphael</span>
-            <span className="text-primary">.</span>
-          </motion.button>
+          <div className="w-[120px]"> {/* Container para manter o espaço */}
+            <AnimatePresence>
+              {showLogo && (
+                <motion.button
+                  layoutId="logo"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ 
+                    duration: 1.5, 
+                    ease: [0.65, 0, 0.35, 1] 
+                  }}
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="text-xl font-bold tracking-tight"
+                >
+                  <motion.span layoutId="logo-r" className="text-primary inline-block">R</motion.span><motion.span layoutId="logo-text" className="text-foreground inline-block">{"aphael".split("").map((letter, i) => (
+                    <span key={i} className="inline-block">{letter}</span>
+                  ))}</motion.span><motion.span layoutId="logo-dot" className="text-primary inline-block">.</motion.span>
+                </motion.button>
+              )}
+            </AnimatePresence>
+          </div>
 
           {/* Desktop links */}
           <nav className="hidden md:flex items-center gap-8">

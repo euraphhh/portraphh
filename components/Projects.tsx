@@ -1,17 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { ArrowUpRight, Github, PenLine, PlaySquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { FaBehance } from "react-icons/fa";
 import serbImage from "../src/assets/163.png";
+import verisImage from "../src/assets/veris.jpg";
 import projectImage from "../src/assets/project.jpg";
 
-const ease = [0.25, 0.46, 0.45, 0.94] as const;
+interface Project {
+  title: string;
+  description: string;
+  image: StaticImageData;
+  href: string;
+  behance?: string;
+  badges: string[];
+  accent: string;
+  redButton?: string;
+  outlineButton?: string;
+}
 
-const projects = [
+const projects: Project[] = [
   {
     title: "SERB",
     description:
@@ -30,17 +42,29 @@ const projects = [
     badges: ["Python", "Automação", "CLI", "Utilitário"],
     accent: "from-foreground/10 to-transparent",
   },
+  {
+    title: "VERIS Creative Studio",
+    description:
+      "Meu primeiro projeto voltado a design e UX/UI. A VERIS é um estúdio criativo que atende empresas locais.",
+    image: verisImage,
+    href: "https://veriscreative.vercel.app",
+    behance: "https://www.behance.net/gallery/246451035/VERIS-Creative-Identidade-Visual",
+    badges: ["Next.js", "Shadcn/UI", "UX/UI", "Projeto autoral", "Photoshop", "Figma", "Python"],
+    accent: "from-primary/20 to-transparent",
+    redButton: "Visite o site",
+    outlineButton: "Behance"
+  },
 ];
 
 export function Projects() {
   return (
     <section id="projetos" className="section-padding">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-[1400px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-16"
         >
           <p className="text-primary text-sm font-mono font-medium mb-2">03. trabalho</p>
@@ -59,7 +83,7 @@ export function Projects() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, ease, delay: index * 0.08 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.08 }}
             >
               <Card className="overflow-hidden border-border/80 bg-card/90 backdrop-blur-sm">
                   <div className={`grid lg:grid-cols-2 ${index % 2 === 1 ? "lg:[&>div:first-child]:order-2 lg:[&>div:last-child]:order-1" : ""}`}>
@@ -101,14 +125,14 @@ export function Projects() {
                       <div className="flex flex-wrap gap-3 pt-2">
                         <Button asChild>
                           <a href={project.href} target="_blank" rel="noreferrer" className="group">
-                            Ver repositório
+                            {project.redButton || "Ver repositório"}
                             <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                           </a>
                         </Button>
                         <Button variant="outline" asChild>
-                          <a href={project.href} target="_blank" rel="noreferrer">
-                            <Github className="h-4 w-4" />
-                            Código
+                          <a href={project.behance || project.href} target="_blank" rel="noreferrer">
+                            {project.behance ? <FaBehance className="h-4 w-4" /> : <Github className="h-4 w-4" />}
+                            {project.outlineButton || "Código"}
                           </a>
                         </Button>
                       </div>
@@ -123,7 +147,7 @@ export function Projects() {
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease, delay: 0.15 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
             className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
           >
             <Card className="p-6 border-dashed bg-muted/20">

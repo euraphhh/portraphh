@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Twitter } from "lucide-react";
+import { ArrowDown, Github, Linkedin } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
@@ -26,51 +27,12 @@ export function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Animated background blobs */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <motion.div
-          className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-primary/8 blur-[120px]"
-          animate={{ x: [0, 60, 0], y: [0, -40, 0], scale: [1, 1.15, 1] }}
-          transition={{ duration: 18, ease: "easeInOut", repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary/6 blur-[100px]"
-          animate={{ x: [0, -50, 0], y: [0, 50, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 22, ease: "easeInOut", repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-primary/4 blur-[80px]"
-          animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
-          transition={{ duration: 30, ease: "linear", repeat: Infinity }}
-        />
-      </div>
-
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 -z-10 opacity-[0.03] dark:opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
         className="max-w-4xl mx-auto px-4 sm:px-6 text-center"
       >
-        {/* Badge */}
-        <motion.div variants={item} className="mb-6">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium border border-primary/30 bg-primary/5 text-primary">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-            </span>
-            Disponível para oportunidades
-          </span>
-        </motion.div>
 
         {/* Greeting */}
         <motion.p
@@ -93,7 +55,7 @@ export function Hero() {
         {/* Role */}
         <motion.div variants={item} className="mb-6">
           <p className="text-xl sm:text-2xl text-muted-foreground font-light tracking-wide">
-            Desenvolvedor Full Stack
+            Desenvolvedor GenAI/Web
             <span className="ml-1 inline-block w-0.5 h-6 bg-primary align-middle animate-cursor-blink" />
           </p>
         </motion.div>
@@ -152,9 +114,9 @@ export function Hero() {
               label: "LinkedIn",
             },
             {
-              icon: Twitter,
-              href: "https://twitter.com/euraphhh",
-              label: "Twitter",
+              icon: FaXTwitter,
+              href: "https://x.com/euraphhh",
+              label: "X",
             },
           ].map(({ icon: Icon, href, label }) => (
             <motion.a
@@ -165,7 +127,7 @@ export function Hero() {
               aria-label={label}
               whileHover={{ scale: 1.15, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2, ease }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
               className="w-10 h-10 flex items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 hover:bg-primary/5 transition-colors duration-200"
             >
               <Icon className="w-4 h-4" />
