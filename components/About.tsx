@@ -30,7 +30,7 @@ const facts = [
 
 const experiences = [
   {
-    title: "Dev GenAI",
+    title: "Desenvolvedor Gen AI",
     company: "Novale Soluções",
     period: "Nov/2025 - Presente",
     summary:

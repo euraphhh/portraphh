@@ -55,7 +55,7 @@ export function Hero() {
         {/* Role */}
         <motion.div variants={item} className="mb-6">
           <p className="text-xl sm:text-2xl text-muted-foreground font-light tracking-wide">
-            Desenvolvedor GenAI/Web
+            Engenheiro de IA e Desenvolvedor Full Stack
             <span className="ml-1 inline-block w-0.5 h-6 bg-primary align-middle animate-cursor-blink" />
           </p>
         </motion.div>

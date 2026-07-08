@@ -1,47 +1,29 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image, { type StaticImageData } from "next/image";
 import { ArrowUpRight, Github, PenLine, PlaySquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { FaBehance } from "react-icons/fa";
-import serbImage from "../src/assets/163.png";
 import verisImage from "../src/assets/veris.jpg";
-import projectImage from "../src/assets/project.jpg";
 
 interface Project {
   title: string;
   description: string;
-  image: StaticImageData;
-  href: string;
+  image: StaticImageData | string;
+  href?: string;
   behance?: string;
   badges: string[];
   accent: string;
   redButton?: string;
   outlineButton?: string;
+  inProgress?: boolean;
 }
 
 const projects: Project[] = [
-  {
-    title: "SERB",
-    description:
-      "Rede social voltada para a comunidade artística, criada como projeto de conclusão do curso técnico em informática. O foco foi permitir que usuários compartilhassem obras e interagissem com outros artistas.",
-    image: serbImage,
-    href: "https://github.com/euraphhh/serbapp",
-    badges: ["React", "Node.js", "Design", "Projeto autoral"],
-    accent: "from-primary/20 to-transparent",
-  },
-  {
-    title: "pyBasicConverter",
-    description:
-      "Ferramenta em Python para converter vídeos do YouTube para MP3 e WAV, pensada para simplificar uma tarefa recorrente com uma interface mais direta.",
-    image: projectImage,
-    href: "https://github.com/euraphhh/pyBasicConverter",
-    badges: ["Python", "Automação", "CLI", "Utilitário"],
-    accent: "from-foreground/10 to-transparent",
-  },
   {
     title: "VERIS Creative Studio",
     description:
@@ -54,9 +36,56 @@ const projects: Project[] = [
     redButton: "Visite o site",
     outlineButton: "Behance"
   },
+
+  {
+    title: "Zylo",
+    description: "Agente de IA que realiza análises jurídicas com base em documentos. ",
+    image: "",
+    badges: ["AI/GenAI", "LLM", "Integrações", "Gemini", "Python"],
+    accent: "from-primary/20 to-transparent",
+    inProgress: true
+  },
+
+  {
+    title: "Archon",
+    description: "Agente de IA que orienta e realiza processos para clientes de CRM. ",
+    image: "",
+    badges: ["AI/GenAI", "LLM", "RAG", "LangChain", "Gemini", "Python"],
+    accent: "from-primary/20 to-transparent",
+    inProgress: true
+  },
+
+    {
+    title: "Lux",
+    description: "Agente de IA que realiza auditorias de instalações para técnicos de telecom. ",
+    image: "",
+    badges: ["AI/GenAI", "LLM", "Visão Computacional", "OCR", "Gemini"],
+    accent: "from-primary/20 to-transparent",
+    inProgress: true
+  },
+
+  {
+    title: "ArkitektAI",
+    description: "Inspirado no Spring Initializr, o Arkitekt é uma plataforma onde os desenvolvedores de IA podem gerar seu projeto do zero.",
+    image: "",
+    href: "https://arkitektai.vercel.app",
+    badges: ["AI/GenAI", "Next.js", "Design", "Arquitetura de Software"],
+    accent: "from-primary/20 to-transparent",
+    redButton: "Visite o site",
+    outlineButton: "GitHub",
+    inProgress: true
+  },
 ];
 
 export function Projects() {
+  const [filter, setFilter] = useState<string | null>(null);
+
+  const allBadges = Array.from(new Set(projects.flatMap((p) => p.badges)));
+
+  const filteredProjects = filter
+    ? projects.filter((p) => p.badges.includes(filter))
+    : projects;
+
   return (
     <section id="projetos" className="section-padding">
       <div className="max-w-[1400px] mx-auto">
@@ -74,27 +103,55 @@ export function Projects() {
             Alguns trabalhos que mostram a linha que eu venho seguindo: produto útil,
             interface limpa e implementação direta ao ponto.
           </p>
+
+          <div className="mt-8 flex flex-wrap gap-2">
+            <Badge
+              variant={filter === null ? "default" : "outline"}
+              className="cursor-pointer transition-colors"
+              onClick={() => setFilter(null)}
+            >
+              Todos
+            </Badge>
+            {allBadges.map((badge) => (
+              <Badge
+                key={badge}
+                variant={filter === badge ? "default" : "outline"}
+                className="cursor-pointer transition-colors"
+                onClick={() => setFilter(filter === badge ? null : badge)}
+              >
+                {badge}
+              </Badge>
+            ))}
+          </div>
         </motion.div>
 
         <div className="grid gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.08 }}
-            >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                layout
+                key={project.title}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
               <Card className="overflow-hidden border-border/80 bg-card/90 backdrop-blur-sm">
                   <div className={`grid lg:grid-cols-2 ${index % 2 === 1 ? "lg:[&>div:first-child]:order-2 lg:[&>div:last-child]:order-1" : ""}`}>
                   <div className="relative min-h-[280px] lg:min-h-[360px]">
                     <div className={`absolute inset-0 bg-gradient-to-br ${project.accent}`} />
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                    />
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-muted/20 flex items-center justify-center">
+                        <span className="text-muted-foreground/50 font-mono text-sm">Sem imagem</span>
+                      </div>
+                    )}
                   </div>
 
                   <div className="p-6 sm:p-8 lg:p-10 flex items-center">
@@ -123,25 +180,38 @@ export function Projects() {
                       </div>
 
                       <div className="flex flex-wrap gap-3 pt-2">
-                        <Button asChild>
-                          <a href={project.href} target="_blank" rel="noreferrer" className="group">
-                            {project.redButton || "Ver repositório"}
-                            <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                          </a>
-                        </Button>
-                        <Button variant="outline" asChild>
-                          <a href={project.behance || project.href} target="_blank" rel="noreferrer">
-                            {project.behance ? <FaBehance className="h-4 w-4" /> : <Github className="h-4 w-4" />}
-                            {project.outlineButton || "Código"}
-                          </a>
-                        </Button>
+                        {project.inProgress ? (
+                          <Button disabled variant="secondary" className="opacity-70 cursor-not-allowed">
+                            Em andamento
+                          </Button>
+                        ) : (
+                          <>
+                            {project.href && (
+                              <Button asChild>
+                                <a href={project.href} target="_blank" rel="noreferrer" className="group">
+                                  {project.redButton || "Ver repositório"}
+                                  <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                                </a>
+                              </Button>
+                            )}
+                            {(project.behance || project.href) && (
+                              <Button variant="outline" asChild>
+                                <a href={project.behance || project.href} target="_blank" rel="noreferrer">
+                                  {project.behance ? <FaBehance className="h-4 w-4" /> : <Github className="h-4 w-4" />}
+                                  {project.outlineButton || "Código"}
+                                </a>
+                              </Button>
+                            )}
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
                 </div>
               </Card>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </AnimatePresence>
 
           <motion.div
             initial={{ opacity: 0, y: 18 }}
