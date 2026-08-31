@@ -55,7 +55,7 @@ export function Contact() {
           transition={{ duration: 0.6, ease }}
           className="mb-8"
         >
-          <p className="text-primary text-sm font-mono font-medium mb-2">04. contato</p>
+          <p className="text-primary text-sm font-mono font-medium mb-2">05. contato</p>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Contato</h2>
         </motion.div>
 

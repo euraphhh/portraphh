@@ -30,20 +30,27 @@ const facts = [
 
 const experiences = [
   {
-    title: "Desenvolvedor Gen AI",
+    title: "Engenheiro de Software - IA",
+    company: "Kaffa Tech",
+    period: "Ago/2026 - Presente",
+    summary:
+      "Atuo no desenvolvimento de produtos com IA, integrando LLMs e soluções de IA em produtos digitais, além na criação de novas features agênticas para melhora em latência e custo de LLMs.",
+    tags: ["AI", "Node.js", "React", "Produtos com IA", "APIs"]},
+  {
+    title: "Desenvolvedor de software - IA",
     company: "Novale Soluções",
-    period: "Nov/2025 - Presente",
+    period: "Nov/2025 - Ago/2026",
     summary:
       "Atuação voltada a AI/GenAI, explorando automações, fluxos inteligentes e apoio a produtos com foco em produtividade.",
     tags: ["AI/GenAI", "Automação", "Integração", "Produtos digitais, React, PHP"],
   },
   {
-    title: "Técnico em Informática",
-    company: "Experiência prévia",
-    period: "Base prática consolidada",
+    title: "Desenvolvedor Fullstack",
+    company: "Autônomo",
+    period: "Jul/2022 - Out/2024",
     summary:
-      "Vivência com suporte, organização de ambientes, princípios de programação, manutenção e resolução de problemas no dia a dia técnico.",
-    tags: ["Java", "C++", "Manutenção", "Resolução de problemas"],
+      "Desenvolvimento de sites e sistemas para clientes, com foco em e-commerce e soluções personalizadas.",
+    tags: ["JavaScript", "React", "Node.js", "PostgreSQL"],
   },
 ];
 

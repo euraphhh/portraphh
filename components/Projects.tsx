@@ -38,32 +38,22 @@ const projects: Project[] = [
   },
 
   {
-    title: "Zylo",
-    description: "Agente de IA que realiza análises jurídicas com base em documentos. ",
+    title: "Toothify",
+    description: "Plataforma de gestão para clínicas odontológicas com integração direta com IA.",
     image: "",
-    badges: ["AI/GenAI", "LLM", "Integrações", "Gemini", "Python"],
+    badges: ["React", "Next.js", "TypeScript", "Shadcn/UI", "AI/GenAI", "LLM", "Integrações", "Gemini", "Python"],
     accent: "from-primary/20 to-transparent",
     inProgress: true
   },
 
   {
-    title: "Archon",
-    description: "Agente de IA que orienta e realiza processos para clientes de CRM. ",
+    title: "Sany",
+    description: "Linguagem de programação lightweight e open-source feita para ser utilizada em ambientes de IA.",
     image: "",
-    badges: ["AI/GenAI", "LLM", "RAG", "LangChain", "Gemini", "Python"],
+    badges: ["AI/GenAI", "LLMs", "Type hints", "Design"],
     accent: "from-primary/20 to-transparent",
     inProgress: true
   },
-
-    {
-    title: "Lux",
-    description: "Agente de IA que realiza auditorias de instalações para técnicos de telecom. ",
-    image: "",
-    badges: ["AI/GenAI", "LLM", "Visão Computacional", "OCR", "Gemini"],
-    accent: "from-primary/20 to-transparent",
-    inProgress: true
-  },
-
   {
     title: "ArkitektAI",
     description: "Inspirado no Spring Initializr, o Arkitekt é uma plataforma onde os desenvolvedores de IA podem gerar seu projeto do zero.",
@@ -96,7 +86,7 @@ export function Projects() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-16"
         >
-          <p className="text-primary text-sm font-mono font-medium mb-2">03. trabalho</p>
+          <p className="text-primary text-sm font-mono font-medium mb-2">04. trabalho</p>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Projetos</h2>
           <div className="mt-4 h-px w-16 bg-primary" />
           <p className="mt-6 text-muted-foreground max-w-2xl">
