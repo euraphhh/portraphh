@@ -61,9 +61,11 @@ const projects: Project[] = [
     description: "Inspirado no Spring Initializr, o Arkitekt é uma plataforma onde os desenvolvedores de IA podem gerar seu projeto do zero.",
     image: arkitektImage,
     href: "https://arkitekt-ai.vercel.app",
+    github: "https://github.com/euraphhh/arkitekt-ai",
     badges: ["AI/GenAI", "Next.js", "Design", "Arquitetura de Software"],
     accent: "from-primary/20 to-transparent",
-    redButton: "Visite o site"
+    redButton: "Visite o site",
+    outlineButton: "GitHub"
   },
 ];
 
