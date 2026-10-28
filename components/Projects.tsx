@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { FaBehance } from "react-icons/fa";
 import verisImage from "../src/assets/veris.jpg";
+import arkitektImage from "../src/assets/arkitekt.png";
 
 interface Project {
   title: string;
@@ -16,6 +17,7 @@ interface Project {
   image: StaticImageData | string;
   href?: string;
   behance?: string;
+  github?: string;
   badges: string[];
   accent: string;
   redButton?: string;
@@ -57,13 +59,13 @@ const projects: Project[] = [
   {
     title: "ArkitektAI",
     description: "Inspirado no Spring Initializr, o Arkitekt é uma plataforma onde os desenvolvedores de IA podem gerar seu projeto do zero.",
-    image: "",
-    href: "https://arkitektai.vercel.app",
+    image: arkitektImage,
+    href: "https://arkitekt-ai.vercel.app",
+    github: "https://github.com/euraphhh/arkitekt-ai",
     badges: ["AI/GenAI", "Next.js", "Design", "Arquitetura de Software"],
     accent: "from-primary/20 to-transparent",
     redButton: "Visite o site",
-    outlineButton: "GitHub",
-    inProgress: true
+    outlineButton: "GitHub"
   },
 ];
 
@@ -184,9 +186,9 @@ export function Projects() {
                                 </a>
                               </Button>
                             )}
-                            {(project.behance || project.href) && (
+                            {(project.behance || project.github) && (
                               <Button variant="outline" asChild>
-                                <a href={project.behance || project.href} target="_blank" rel="noreferrer">
+                                <a href={project.behance || project.github} target="_blank" rel="noreferrer">
                                   {project.behance ? <FaBehance className="h-4 w-4" /> : <Github className="h-4 w-4" />}
                                   {project.outlineButton || "Código"}
                                 </a>
